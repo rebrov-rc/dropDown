@@ -1,0 +1,35 @@
+*, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(226, 226, 226);
+}
+.page{
+    margin: auto;
+    max-width: 1170px;
+    width: 100%;
+    min-height: 100vh;
+    // 
+    background-color: #fff;
+}
+.center{
+    margin: auto;
+}
+.flx-reg{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+// ================================================>
+.dd-wrap{
+    width: 500px;
+    min-height: 100px;
+    // 
+    border: solid 1px;
+}
+.changing{
+    list-style-type: none;
+}
