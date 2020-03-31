@@ -23,6 +23,12 @@ body{
     justify-content: center;
     align-items: center;
 }
+.flx-col{
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+}
 // ================================================>
 .dd-wrap{
     width: 500px;
@@ -32,4 +38,5 @@ body{
 }
 .changing{
     list-style-type: none;
+
 }
