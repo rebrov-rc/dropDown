@@ -47,6 +47,23 @@ body {
           flex-direction: column;
 }
 
+span {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.check {
+  color: #9e9e9e;
+  margin: 0.5px .5em;
+}
+
+.closed {
+  display: none;
+}
+
 .dd-wrap {
   width: 500px;
   min-height: 100px;
@@ -55,5 +72,42 @@ body {
 
 .changing {
   list-style-type: none;
+}
+
+.page-i {
+  border-top: none;
+  border-bottom: none;
+  border-left: solid #e9e9e9;
+  border-right: solid #e9e9e9;
+}
+
+.main-list-wrap {
+  border: #909090 solid 0.2px;
+  min-width: 18em;
+  min-height: 2em;
+  position: relative;
+}
+
+.changed {
+  width: 16em;
+  height: 2em;
+  border: solid #8f8f8f 0.1px;
+}
+
+.pse-button {
+  min-width: 2em;
+  height: 2em;
+  border: solid #8b8b8b 0.1px;
+}
+
+.list-container {
+  height: 15em;
+  width: 100%;
+  padding: 1em 2em;
+  overflow-y: scroll;
+  position: absolute;
+  bottom: 2em;
+  display: none;
+  border: solid #8b8b8b 0.1px;
 }
 /*# sourceMappingURL=main.css.map */

@@ -1,10 +1,53 @@
 const innerInputMas = document.querySelector('.innerSearch');
-// let input = innerInputMas.value
-innerInputMas.onkeyup = filt;
+let input = innerInputMas.value
+// innerInputMas.onkeyup = filt;
+innerInputMas.onkeyup = filterI;
 // =======================================================>
 const innerListMassive = document.querySelector('.changing');
 const op = document.querySelectorAll('option');
-let innerOp = [];
+let innerOp = ['f', 'r' , 'a' , 'n' , 'c' , 'e'];
+console.log(innerOp)
+
+
+
+
+function filterI() {
+let aa = [];
+
+    for(i=0; i<innerInputMas.value.length; i++ ){   // масс из инпута
+        aa[i] = innerInputMas.value[i];
+    }
+    console.log(innerInputMas.value.length)
+    console.log(aa)
+    let ffff;
+        for (n = 0; n < aa.length; n++){
+
+            let tt = innerOp.filter(function(items){
+                return items == aa[n];
+            });
+            ffff = tt;
+
+        }
+        // console.log(ffff.length)
+        if (ffff.length > 0 ) {
+            console.log('true')
+            // for(e = 0; e < fil.length; e++){
+                let created = document.createElement('span');
+                created.className = "check";
+
+                let addIn = created.innerText = (innerOp);
+                innerListMassive.prepend(created);
+            // }
+        } else {
+            console.log('false')
+
+        }
+// let tt = innerOp.filter(function(items){
+//     return items == aa;
+// });
+// console.log(tt)
+}
+
 
                                                                         // 1 буква = 1 совпадение / 2 буквы = 2 совпадения / 3 буквы = 3 совпадения
 
@@ -158,12 +201,14 @@ function filt () {
         if (fil){
             for(e=0;e<fil.length; e++){
                 let created = document.createElement('span');
+                created.className = "check";
+
                 let addIn = created.innerText = (fil[e]);
                 innerListMassive.prepend(created);
             }
         }
     } else {
-        let removeTag = document.querySelectorAll('span');
+        let removeTag = document.querySelectorAll('span.check');
 
         for(l=0;l<removeTag.length;l++){
         removeTag[l].remove();
