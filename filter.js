@@ -5,9 +5,13 @@ innerInputMas.onkeyup = filterI;
 // =======================================================>
 const innerListMassive = document.querySelector('.changing');
 const op = document.querySelectorAll('option');
-let innerOp = ['f', 'r' , 'a' , 'n' , 'c' , 'e'];
-console.log(innerOp)
+let innerOp = [];
+console.log(op)
 
+for(i=0;i<op.length;i++) {
+    innerOp[i] = op[i].innerText;
+}
+console.log(innerOp)
 
 
 
@@ -17,31 +21,51 @@ let aa = [];
     for(i=0; i<innerInputMas.value.length; i++ ){   // масс из инпута
         aa[i] = innerInputMas.value[i];
     }
-    console.log(innerInputMas.value.length)
-    console.log(aa)
-    let ffff;
-        for (n = 0; n < aa.length; n++){
+    // console.log(innerInputMas.value.length)
+    // console.log(aa)
+    // ==== 2 цикл =================
+    // if ()
 
-            let tt = innerOp.filter(function(items){
-                return items == aa[n];
-            });
-            ffff = tt;
+    // ==== 1 цикл =================
+    for(i=0;i<innerOp.length;i++) {
+        let takeOne, addClassI;
+        addClassI = op[i]
+        console.log(addClassI)
+        takeOne = innerOp[i];
+         console.log(takeOne)
+        let takeInArr = new Array;
+            for(m=0;m<takeOne.length;m++){
+                takeInArr[m] = takeOne[m]
+            }
 
-        }
-        // console.log(ffff.length)
-        if (ffff.length > 0 ) {
-            console.log('true')
-            // for(e = 0; e < fil.length; e++){
-                let created = document.createElement('span');
-                created.className = "check";
+            let ffff;
+            for (n = 0; n < aa.length; n++){
 
-                let addIn = created.innerText = (innerOp);
-                innerListMassive.prepend(created);
-            // }
-        } else {
-            console.log('false')
+                // console.log(takeOne[n])
+                let tt = takeInArr.filter(function(items){
+                    return items == aa[n];
+                });
+                ffff = tt;
 
-        }
+            }
+            console.log(ffff.length)
+            if (ffff.length ) {
+                console.log('true')
+                // for(e = 0; e < fil.length; e++){
+                    // let created = document.createElement('span');
+                    // created.className = "check";
+                    let prep = addClassI.className = "check";
+                    let kl = document.querySelector('.check');
+                    innerListMassive.appendChild(kl);
+
+
+                // }
+            } else {
+                console.log('false')
+
+            }
+    }
+
 // let tt = innerOp.filter(function(items){
 //     return items == aa;
 // });
