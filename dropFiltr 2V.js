@@ -3,6 +3,9 @@ let list = document.querySelectorAll('div.list span');    // масс листа
 let span = document.querySelectorAll('span');    // Spans
 let listI = list.innerText;    // первый из листа
 
+// document.onkeyup = function(event) {
+//     console.log(event);
+// }
 // 
 let changed = document.querySelector('.added-word');    // выбронный эл
 // changed.innerText = listI                               // по умолчанию вписывается первый эл. из списка
@@ -37,22 +40,24 @@ let ul = document.createElement('ul');
 let li = document.createElement('li');
 wrap.appendChild(ul);
 
+function formingList () {
+    let listArr = new Array;
+    for (i = 0; i < list.length; i++) {                                   // Начало Основного цикла
+                        
+        listArr[i] = list[i].innerText ;
+        // console.log(listArr[i])
+            ul.innerHTML += `<li class='click'>${listArr[i]} </li>`  // Добавляю в список HTML =======///////////////////
+        let nn = listArr[i]
 
-let listArr = new Array;
-for (i = 0; i < list.length; i++) {                                   // Начало Основного цикла
-                       
-    listArr[i] = list[i].innerText ;
-    // console.log(listArr[i])
-        ul.innerHTML += `<li class='click'>${listArr[i]} </li>`  // Добавляю в список HTML
-    let nn = listArr[i]
+        listArr[i].onclick = () => {
+            changed.innerText = 'nn'   // s.innerText
+        }
+        list[i].style.display = 'none';
 
-    listArr[i].onclick = () => {
-        changed.innerText = 'nn'   // s.innerText
     }
-    list[i].style.display = 'none';
-
 }
-
+formingList();
+// =============================================================================
 
 let liAll = document.querySelectorAll('li');
 
@@ -75,38 +80,35 @@ changed.innerText = liAll[0].innerText;                              // по у�
 const arrI = ['f', 'r', 'a', 'n', 'c', 'e'];
 let inp = ['r', 'n', 'a'];
 
-// let ppp = [];
-// let pppI = [];
-// for (i = 0; i < arrI.length; i++) { 
-//     if (arrI.indexOf(inp[i]) != -1){
-//     ppp[i] = arrI.indexOf(inp[i]);
+let backSpace = 0;
 
-//     }
-//     pppI[i] = arrI.indexOf(inp[i]);
-// }
-
-// let res = arrI.indexOf(inp[0,1]);
-// console.log(ppp)
-// console.log(pppI)
-
-// while (0 < arrI.length) {
-//     console.log('Hi')
-// }
+input.onkeyup = () => {                                // содержание ввода /////////////////////////////////////////////////////////////////////////
 
 
+    let ttt = input.value;
+    console.log(input.value.length);
+    if ( event.keyCode === 8 ) {
+       if (ttt.length > 0){
+        backSpace += 1
+        }else if (ttt.length === 0){
+            backSpace ;
+            console.log(backSpace + '/////////////////////////////////');
+        }
 
+    }   
+    console.log(ttt.length + '//////////////////////////');
+    // console.log(backSpace);
 
 
 
-input.onkeyup = () => {                                // содержание ввода
     console.log('');
-// ======================================================>
+// ================ Перебор листа ======================================>
 
-    for (i = 0; i < liAll.length; i++) {                    // перебор листа
+    for (i = 0; i < liAll.length; i++) {                    // перебор листа ///////////////////////////////////////////////
         let oneWord;
         oneWord = liAll[i].innerText;
         
-// ======================================================>
+// ================ Слово в массив ======================================>
         let oneWordMassive = []
         for (j = 0; j < oneWord.length; j++ ){       // перебор слова в массив букв
             oneWordMassive[j] = oneWord[j];   
@@ -116,7 +118,7 @@ input.onkeyup = () => {                                // содержание �
         //////////
         let inputVal = input.value;
         let allLenInput = inputVal.length;
-        console.log(allLenInput) ;//////////////////////////////////////
+        //console.log(allLenInput) ;//////////////////////////////////////
 
         for (n = 0; n < inputVal.length; n++) {             // Начало Основного цикла
             inputMas[n] = inputVal[n];                      // Массив из инпута
@@ -131,18 +133,20 @@ input.onkeyup = () => {                                // содержание �
             if (oneWordMassive.indexOf(inputMas[m]) != -1){
                 resourchedWord[m] = oneWordMassive.indexOf(inputMas[m]);         // Массив нахождения совпадений из листа
                                                                                 // получили массив совподений индексов                   
-        
+                
             } else {
                 // resourchedWord.pop(); 
             }
-            
-            // console.log(resourchedWord)          // НЕ СРАБОТАЛО
+            // console.log(resourchedWord.length) 
+           // console.log(resourchedWord)          // НЕ СРАБОТАЛО
             // pppI[i] = arrI.indexOf(inputMas[i]);
         }
         // console.log(inputMas) ; //содержание инпута
         // console.log(resourchedWord) ; //содержание совподения
         // console.log(n) ;
         // console.log(resourchedWord.length + ' == ' + inputVal.length)
+        // ======================================================>
+
         let allLenResourched = resourchedWord.length;
 
 
@@ -150,32 +154,44 @@ input.onkeyup = () => {                                // содержание �
         // console.log(resourchedWord[1]) ;
         // console.log(inputMas[0]) ;
 
-        for(let p = 0; p < allLenInput; p++ ){              // цикл инпута
+        // for(let p = 0; p < allLenInput; p++ ){              // цикл инпута
             // console.log('=============================');
             // console.log(resourchedWord[p]) ;
             // let l = 0;
             // console.log(allLenInput - 1);
             // console.log(resourchedWord[resourchedWord]);
             // console.log('=============================');
-
-            if ( allLenInput - 1 === resourchedWord[p] ) {      //
-                // console.log(oneWord);                           //
-                   if ( allLenInput - 1 === allLenResourched ){
-                    console.log(oneWord); 
-                   }
-                   // continue;   //????????                        // ЗДЕСЬ ЗАКОНЧИЛ ВЧЕРА
+            // console.log(allLenInput - 1 + ' === ' + resourchedWord[allLenInput - 1]);  
+        // ==========================================================================================>
+                // console.log(allLenInput); 
+            // if ( allLenInput  === resourchedWord ) {      //
+            //     // console.log(allLenInput - 1 + ' === ' + resourchedWord[allLenInput - 1]);                           //
+            //     //    if ( allLenInput - 1 === allLenResourched ){
+            //         console.log(oneWord); 
+            //     //    }
+            //        // continue;   //????????                        // ЗДЕСЬ ЗАКОНЧИЛ ВЧЕРА
                     
-                }else {                                             //
-                // oneWord.remove();                               //
-                console.log(liAll[i]);
-                // liAll[i].remove();
+            //     }else {     
+            //     liAll[i].remove();
+            //     //
+            //     // oneWord.remove();                               //
+            //     // console.log(liAll[i]);
 
-            }
-        }
-        // if ( allLenResourched === allLenInput ) {
-        //     // console.log('TRUE');
-        //     console.log(oneWord);
-        // }//else { console.log('FALSE'); }
+            // }
+        // }
+
+        if ( allLenResourched - backSpace === allLenInput ) {               // Сравнение и Отбор
+            // console.log('TRUE');
+            console.log(allLenResourched - backSpace + '==' + allLenInput);
+            // console.log(allLenInput);
+            // liAll[i].prepend();
+
+        }else { 
+            // console.log('FALSE'); 
+            liAll[i].remove();
+            // if ( allLenInput === 0 ) {formingList();}
+    }
+    console.log( allLenResourched - backSpace + '==' + allLenInput + '|||||||||||');
 // ======================================================>
 
     }
@@ -200,3 +216,4 @@ input.onkeyup = () => {                                // содержание �
         // console.log(pppI)
 
 }
+
