@@ -64,6 +64,10 @@ span {
   display: none;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .dd-wrap {
   width: 500px;
   min-height: 100px;

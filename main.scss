@@ -44,6 +44,9 @@ span{
 .closed {
     display: none;
 }
+ul{
+    list-style-type: none;
+}
 // ================================================>
 .dd-wrap{
     width: 500px;
@@ -86,9 +89,9 @@ span{
 }
 // 
 .list{
-    &-wrap{
+    // &-wrap{
 
-    }
+    // }
     &-container{
         height: 15em;
         width: 100%;
