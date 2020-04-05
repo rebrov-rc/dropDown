@@ -182,7 +182,7 @@ input.onkeyup = () => {                                // содержание �
 
         if ( allLenResourched - backSpace === allLenInput ) {               // Сравнение и Отбор
             // console.log('TRUE');
-            console.log(allLenResourched - backSpace + '==' + allLenInput);
+            // console.log(allLenResourched - backSpace + '==' + allLenInput);
             // console.log(allLenInput);
             // liAll[i].prepend();
 
@@ -191,7 +191,7 @@ input.onkeyup = () => {                                // содержание �
             liAll[i].remove();
             // if ( allLenInput === 0 ) {formingList();}
     }
-    console.log( allLenResourched - backSpace + '==' + allLenInput + '|||||||||||');
+    // console.log( allLenResourched - backSpace + '==' + allLenInput + '|||||||||||');
 // ======================================================>
 
     }

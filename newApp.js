@@ -1,11 +1,9 @@
-// 
 var wrap = document.querySelector('.list'); // масс листа
 var list = document.querySelectorAll('div.list span'); // масс листа
 var listI = document.querySelector('div.list span'); // первый из листа
-listI.innerText;
 // 
 var changed = document.querySelector('.added-word'); // выбронный эл
-//changed.innerText = listI;                            // по умолчанию вписывается первый эл. из списка
+changed.innerText = listI.innerText; // по умолчанию вписывается первый эл. из списка
 // 
 var сontainer = document.querySelector('.list-container'); // контейнер со списком
 var open = document.querySelector('.main-list-wrap'); // открывающий контейнер
@@ -23,10 +21,9 @@ var listArr = new Array;
 for (var i = 0; i < list.length; i++) { // Начало Основного цикла
     listArr[i] = list[i].innerText;
     ul.innerHTML += "<li class='click'>" + listArr[i] + " </li>"; // Добавляю в список HTML ПО УМОЛЧАНИЮ
-    var nn = listArr[i];
+    //    let nn = listArr[i]
     list[i].style.display = 'none';
 }
-changed.innerText = listArr[0]; // по умолчанию вписывается первый эл. из списка
 // 
 var liAll = document.querySelectorAll('li');
 var _loop_1 = function (i) {
@@ -43,7 +40,6 @@ for (var i = 0; i < liAll.length; i++) {
 // 
 input.onclick = function () { event.stopPropagation(); }; // блок на событие
 input.onkeyup = function () {
-    console.log(input.value);
     // ======================================================================================================================
     // ================ Перебор листа ======================================>
     for (var i = 0; i < liAll.length; i++) { // перебор листа
@@ -56,26 +52,27 @@ input.onkeyup = function () {
         }
         // ======================================================>
         var inputVal = input.value;
-        var allLenInput = inputVal.length; // Длина меняется у инпута в обе стороны ///////////////////////////////////////////////
+        //   let allLenInput = inputVal.length;      // Длина меняется у инпута в обе стороны ///////////////////////////////////////////////
         for (var n = 0; n < inputVal.length; n++) { // Начало Основного цикла
             inputMas[n] = inputVal[n]; // Массив из инпута
         }
         // ======================================================>
-        var resourchedWord = []; //МАССИВ С ЧИСЛАМИ ИМЕЕТ ДЛИНУ
-        for (var m = 0; m < oneWordMassive.length; m++) { // цикл сравнивание с Массивом слова списка
-            if (oneWordMassive.indexOf(inputMas[m]) != -1) {
-                resourchedWord[m] = oneWordMassive.indexOf(inputMas[m]); // Массив нахождения совпадений из листа
-                // получили массив совподений индексов                   
-            } // else {}
+        for (var m = 0; m < input.value.length; m++) { // цикл сравнивание с Массивом слова списка
+            if (input.value[m] != oneWordMassive[m]) {
+                // resourchedWord[m] = oneWordMassive.indexOf(inputMas[m]);         // Массив нахождения совпадений из листа
+                // liAll[i].remove();
+                ul.append(liAll[i]);
+                liAll[i].style.display = 'none';
+                break; // получили массив совподений индексов                   
+            }
+            if (liAll[i].style.display === 'none') {
+                liAll[i].style.display = 'block';
+            }
         }
-        var allLenResourched = resourchedWord.length;
-        if (allLenResourched === allLenInput) { // Сравнение и Отбор
-            console.log(oneWord);
+        if ('' === input.value) {
+            liAll[i].style.display = 'block';
         }
-        else {
-            liAll[i].remove();
-        }
-        console.log(allLenInput);
+        // ======================================================>
     }
     // =========================================================================================================================
 };
@@ -87,6 +84,11 @@ open.onclick = function openBlock() {
     else {
         сontainer.style.display = 'none';
         input.value = '';
+        for (var i = 0; i < liAll.length; i++) { // перебор листа
+            if ('' === input.value) {
+                liAll[i].style.display = 'block';
+            }
+        }
     }
 };
 var _loop_2 = function (i) {

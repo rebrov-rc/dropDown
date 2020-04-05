@@ -39,43 +39,42 @@ for (i = 0; i < liAll.length; i++) {                 // перебор лист�
 // 
 input.onclick = () => { event.stopPropagation()}       // блок на событие
 input.onkeyup = () => {                                // содержание ввода
+    console.log(input.value)
 // ======================================================================================================================
 
 
-    // ================ Перебор листа ======================================>
-    for (i = 0; i < liAll.length; i++) {                    // перебор листа
-        let oneWord;
-        oneWord = liAll[i].innerText;
-    // ================ Слово в массив ======================================>
-        let oneWordMassive = []
-        for (j = 0; j < oneWord.length; j++ ){       // перебор слова в массив букв
-            oneWordMassive[j] = oneWord[j];   
-        }
-    // ======================================================>
-        let inputVal = input.value;
-    //   let allLenInput = inputVal.length;      // Длина меняется у инпута в обе стороны ///////////////////////////////////////////////
-        for (n = 0; n < inputVal.length; n++) {             // Начало Основного цикла
-            inputMas[n] = inputVal[n];                      // Массив из инпута
-        }
-        // ======================================================>
-        for (m = 0; m < input.value.length; m++) {                 // цикл сравнивание с Массивом слова списка
-            if (input.value[m] != oneWordMassive[m]){
-                // resourchedWord[m] = oneWordMassive.indexOf(inputMas[m]);         // Массив нахождения совпадений из листа
-                    // liAll[i].remove();
-                    ul.append(liAll[i]);
-                    liAll[i].style.display = 'none';
-                    break;                                                           // получили массив совподений индексов                   
-            }      
-            if (liAll[i].style.display === 'none'){
-                liAll[i].style.display = 'block';
-            }
-        }
-            if ('' === input.value) {
-                liAll[i].style.display = 'block';
-            }
-
-    // ======================================================>
+// ================ Перебор листа ======================================>
+for (i = 0; i < liAll.length; i++) {                    // перебор листа
+    let oneWord;
+    oneWord = liAll[i].innerText;
+// ================ Слово в массив ======================================>
+    let oneWordMassive = []
+    for (j = 0; j < oneWord.length; j++ ){       // перебор слова в массив букв
+        oneWordMassive[j] = oneWord[j];   
     }
+// ======================================================>
+    let inputVal = input.value;
+    let allLenInput = inputVal.length;      // Длина меняется у инпута в обе стороны ///////////////////////////////////////////////
+    for (n = 0; n < inputVal.length; n++) {             // Начало Основного цикла
+        inputMas[n] = inputVal[n];                      // Массив из инпута
+    }
+    // ======================================================>
+    let resourchedWord = [];    //МАССИВ С ЧИСЛАМИ ИМЕЕТ ДЛИНУ
+    for (m = 0; m < oneWordMassive.length; m++) {                 // цикл сравнивание с Массивом слова списка
+        if (oneWordMassive.indexOf(inputMas[m]) != -1){
+            resourchedWord[m] = oneWordMassive.indexOf(inputMas[m]);         // Массив нахождения совпадений из листа
+                                                                            // получили массив совподений индексов                   
+        } // else {}
+    }
+    let allLenResourched = resourchedWord.length;
+    if ( allLenResourched === allLenInput ) {               // Сравнение и Отбор
+        console.log(oneWord);
+    }else { 
+        liAll[i].remove();
+    }
+console.log(allLenInput);
+
+}
 
 
 // =========================================================================================================================
@@ -89,12 +88,6 @@ open.onclick = function openBlock() {               // открывание ок
         сontainer.style.display = 'none'; 
         input.value = '';
 
-        for (let i = 0; i < liAll.length; i++) {                 // перебор листа
-            if ('' === input.value) {
-                liAll[i].style.display = 'block';
-            }
-        }
-        
     }
 }
 
