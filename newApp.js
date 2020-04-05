@@ -52,14 +52,12 @@ input.onkeyup = function () {
         }
         // ======================================================>
         var inputVal = input.value;
-        //   let allLenInput = inputVal.length;      // Длина меняется у инпута в обе стороны ///////////////////////////////////////////////
         for (var n = 0; n < inputVal.length; n++) { // Начало Основного цикла
             inputMas[n] = inputVal[n]; // Массив из инпута
         }
         // ======================================================>
         for (var m = 0; m < input.value.length; m++) { // цикл сравнивание с Массивом слова списка
             if (input.value[m] != oneWordMassive[m]) {
-                // resourchedWord[m] = oneWordMassive.indexOf(inputMas[m]);         // Массив нахождения совпадений из листа
                 // liAll[i].remove();
                 ul.append(liAll[i]);
                 liAll[i].style.display = 'none';
