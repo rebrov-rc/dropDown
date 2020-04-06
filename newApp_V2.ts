@@ -47,36 +47,20 @@ input.onkeyup = () => {                                // содержание �
     for ( let i = 0; i < liAll.length; i++) {                    // перебор листа
         let oneWord;
         oneWord = liAll[i].innerText;
-    // ================ Слово в массив ======================================>
-        let oneWordMassive = []
-        for ( let j = 0; j < oneWord.length; j++ ){       // перебор слова в массив букв
-            oneWordMassive[j] = oneWord[j];   
-        }
-    // ======================================================>
-        let inputVal = input.value;
-        for ( let n = 0; n < inputVal.length; n++) {            
-            inputMas[n] = inputVal[n];                      // Массив из инпута
-        }
-        // ======================================================>
-        for ( let m = 0; m < input.value.length; m++) {                 // цикл сравнивание с Массивом слова списка
-            if (input.value[m] != oneWordMassive[m]){
-                    // liAll[i].remove();
-                    ul.append(liAll[i]);
-                    liAll[i].style.display = 'none';
-                    break;                                                           // получили массив совподений индексов                   
-            }      
-            if (liAll[i].style.display === 'none'){
-                liAll[i].style.display = 'block';
-            }
-        }
-            if ('' === input.value) {
-                liAll[i].style.display = 'block';
-            }
+        // ======================================================> ОСНОВНАЯ ФУНКЦИЯ ======================================================>
 
-    // ======================================================>
-    }
+        if ( oneWord.indexOf(input.value) === -1 ) {        // Условие на проверку совпадений строк
+            // ul.append(liAll[i]);
+            liAll[i].style.display = 'none';
+        } else  if (liAll[i].style.display === 'none'){     // Возврат скрытых строк в список
+            liAll[i].style.display = 'block';
+        }
+        if ( '' === input.value) {
+            liAll[i].style.display = 'block';
+        }
+        // console.log( oneWord + ':' + input.value  + '=' + oneWord.indexOf(input.value) );
 
-
+    } 
 // =========================================================================================================================
 }
 
@@ -103,5 +87,3 @@ for ( let i = 0; i < list.length; i++) {                 // запись выб�
         changed.innerText = s.innerText
     }
 }
-// ==============================================================================
-// ==============================================================================
